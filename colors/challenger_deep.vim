@@ -1,9 +1,6 @@
 " Vim Color File
-" Name:       challenger_deep.vim
-" Version:    2.0
-" Maintainer: github.com/MaxSt
-" License:    The MIT License (MIT)
-" Based On: pencil by github.com/reedes and github.com/mattly
+" Name:       arnamak/fork/challenger_deep
+" Version:    1.0
 
 hi clear
 
@@ -11,7 +8,7 @@ if exists('syntax on')
     syntax reset
 endif
 
-let g:colors_name='challenger_deep'
+let g:colors_name='elementary'
 set background=dark
 
 
@@ -38,9 +35,9 @@ let s:light_gray    = { "gui": "#B2B2B2", "cterm": "249", "cterm16" : "249" }
 let s:lighter_gray  = { "gui": "#C6C6C6", "cterm": "251", "cterm16" : "251" }
 
 " flat colors:
-let s:asphalt = { "gui": "#1e1c31", "cterm": "233", "cterm16": "NONE"}
-let s:asphalt_subtle= { "gui": "#100E23", "cterm": "232", "cterm16": "0"}
-let s:dark_asphalt = { "gui": "#565575", "cterm": "236", "cterm16": "8"}
+let s:asphalt = { "gui": "#2d2d2d", "cterm": "NONE", "cterm16": "NONE"}
+let s:asphalt_subtle= { "gui": "#ffffff", "cterm": "NONE", "cterm16": "0"}
+let s:dark_asphalt = { "gui": "#ffffff", "cterm": "NONE", "cterm16": "8"}
 
 let s:red = { "gui": "#ff8080", "cterm": "204", "cterm16": "1"}
 let s:dark_red = { "gui": "#ff5458", "cterm": "203", "cterm16": "9"}
@@ -64,11 +61,11 @@ let s:clouds = { "gui": "#cbe3e7", "cterm": "253", "cterm16": "7"}
 let s:dark_clouds = { "gui": "#a6b3cc", "cterm": "252", "cterm16": "15"}
 
 let s:bg              = s:asphalt
-let s:bg_subtle       = s:asphalt_subtle
+let s:bg_subtle       = s:subtle_black
 let s:bg_dark         = s:dark_asphalt
 let s:norm            = s:clouds
 let s:norm_subtle     = s:dark_clouds
-let s:visual          = s:bg_dark
+let s:visual          = s:dark_red
 
 let s:head_a         = s:dark_blue
 let s:head_b         = s:blue
@@ -104,16 +101,16 @@ call s:h("Normal",        {"bg": s:bg, "fg": s:norm})
 call s:h("Cursor",        {"bg": s:blue, "fg": s:bg_dark})
 call s:h("Comment",       {"fg": s:medium_gray, "gui": "italic", "cterm": "italic"})
 
-call s:h("Constant",      {"fg": s:yellow})
-hi! link String           Constant
+call s:h("Constant",      {"fg": s:purple})
+call s:h("String",        {"fg": s:yellow})
 hi! link Character        Constant
 
 call s:h("Number",       {"fg": s:dark_yellow})
 hi! link Boolean          Constant
 hi! link Float            Constant
 
-call s:h("Identifier",    {"fg": s:purple})
-hi! link Function         Identifier
+call s:h("Identifier",    {"fg": s:dark_purple})
+call s:h("Function",      {"fg": s:dark_green})
 
 call s:h("Label",        {"fg": s:dark_blue})
 hi! link Conditonal       Statement
@@ -122,17 +119,18 @@ hi! link Exception        Statement
 call s:h("Operator",     {"fg": s:dark_cyan})
 hi! link Repeat           Operator
 
-call s:h("PreProc",       {"fg": s:green})
-hi! link Include          PreProc
-hi! link Define           PreProc
+call s:h("PreProc",       {"fg": s:dark_clouds})
+call s:h("Include",       {"fg": s:green})
+call s:h("Define",       {"fg": s:medium_gray})
+call s:h("Define",       {"fg": s:medium_gray})
 hi! link Macro            PreProc
 hi! link PreCondit        PreProc
 
 
-call s:h("Keyword",       {"fg": s:red})
-hi! link Statement        Keyword
+call s:h("Keyword",       {"fg": s:dark_red})
+call s:h("Statement",       {"fg": s:dark_blue})
 
-call s:h("Type",          {"fg": s:blue})
+call s:h("Type",          {"fg": s:dark_blue})
 hi! link StorageClass     Type
 hi! link Structure        Type
 hi! link Typedef          Type
@@ -163,7 +161,7 @@ call s:h("IncSearch",     {"bg": s:red, "fg": s:clouds})
 call s:h("Search",        {"bg": s:bg_dark})
 call s:h("MoreMsg",       {"fg": s:medium_gray, "gui": "bold", "cterm": "bold"})
 hi! link ModeMsg MoreMsg
-call s:h("LineNr",        {"fg": s:dark_asphalt, "bg": s:bg_subtle})
+call s:h("LineNr",        {"fg": s:medium_gray, "bg": s:bg_subtle})
 call s:h("CursorLineNr",  {"bg": s:bg_subtle, "fg": s:blue, "gui": "bold"})
 call s:h("Question",      {"fg": s:red})
 call s:h("StatusLine",    {"bg": s:bg_dark})
@@ -200,9 +198,9 @@ call s:h("PmenuThumb",    {"fg": s:norm, "bg": s:bg_dark})
 call s:h("TabLine",       {"fg": s:norm, "bg": s:bg_dark})
 call s:h("TabLineSel",    {"fg": s:norm, "bg": s:bg_subtle, "gui": "bold", "cterm": "bold"})
 call s:h("TabLineFill",   {"fg": s:norm, "bg": s:bg_dark})
-call s:h("CursorColumn",  {"bg": s:bg_subtle})
-call s:h("CursorLine",    {"bg": s:bg_subtle})
-call s:h("ColorColumn",   {"bg": s:bg_subtle})
+call s:h("CursorColumn",  {"bg": s:medium_gray})
+call s:h("CursorLine",    {"bg": s:medium_gray})
+call s:h("ColorColumn",   {"bg": s:medium_gray})
 
 " remainder of syntax highlighting
 call s:h("MatchParen",    {"bg": s:bg_subtle, "fg": s:purple, "gui": "bold", "cterm": "bold"})
@@ -306,17 +304,20 @@ hi! link xmlTag                     htmlTag
 hi! link xmlEndTag                  xmlTag
 hi! link xmlTagName                 htmlTagName
 
-" Signify
-call s:h("SignifySignAdd",{"fg": s:green, "bg": s:bg_subtle})
-call s:h("SignifySignDelete",{"fg": s:red, "bg": s:bg_subtle})
-call s:h("SignifySignChange",{"fg": s:yellow, "bg": s:bg_subtle})
-call s:h("SignifySignDeleteFirstLine",{"fg": s:red, "bg": s:bg_subtle})
-
-" GitGutter
+" Signify, git-gutter
+hi link SignifySignAdd              LineNr
+hi link SignifySignDelete           LineNr
+hi link SignifySignChange           LineNr
 call s:h("GitGutterAdd",{"fg": s:green, "bg": s:bg_subtle})
 call s:h("GitGutterDelete",{"fg": s:red, "bg": s:bg_subtle})
 call s:h("GitGutterChange",{"fg": s:yellow, "bg": s:bg_subtle})
 call s:h("GitGutterChangeDelete",{"fg": s:red, "bg": s:bg_subtle})
+
+call s:h("CtrlPPrtText",{"fg": s:yellow, "bg": s:bg_subtle})
+call s:h("CtrlPMatch",{"fg": s:yellow, "bg": s:bg_subtle})
+call s:h("CtrlPLinePre",{"fg": s:yellow, "bg": s:bg_subtle})
+call s:h("CtrlPPrtBase",{"fg": s:yellow, "bg": s:bg_subtle})
+call s:h("CtrlPPrtCursor",{"fg": s:yellow, "bg": s:bg_subtle})
 
 
 "nvim terminal colors
@@ -336,3 +337,4 @@ let g:terminal_color_12 = s:dark_blue.gui
 let g:terminal_color_13 = s:dark_purple.gui
 let g:terminal_color_14 = s:dark_cyan.gui
 let g:terminal_color_15 = s:dark_clouds.gui
+hi Visual  guifg=#ffffff guibg=#FFFFFF gui=none
